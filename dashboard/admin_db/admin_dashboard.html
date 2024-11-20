@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="admin_dashboard.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <h1>Admin Dashboard</h1>
+        </div>
+        <ul class="navbar-links" id="navbarLinks">
+            <li><a href="#user data" >Users</a></li>
+            <li><a href="#product-info" class="active">Products</a></li>
+            <li><a href="#historical-data">Historical Data</a></li>
+            <li><a href="#consumer-demand">Consumer Demand</a></li>
+            <li><a href="#real-time-supply">Real-Time Supply</a></li>
+            <li><a href="#market-prices">Market Prices</a></li>
+            <li><a href="#analytics-tools">Analytics</a></li>
+            <li><a href="#logout">Logout</a></li>
+        </ul>
+        <button class="navbar-toggle" id="navbarToggle">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Product Information -->
+        <section id="product-info">
+            <h2>Comprehensive Product Information</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Variety</th>
+                        <th>Seasonality</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Vegetable</td>
+                        <td>Tomato</td>
+                        <td>Summer</td>
+                        <td><button>Edit</button><button>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Historical Production Data -->
+        <section id="historical-data">
+            <h2>Historical Production Data</h2>
+            <div class="chart-container">
+                <canvas id="historicalChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Consumer Demand Data -->
+        <section id="consumer-demand">
+            <h2>Consumer Demand Data</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Consumption Pattern</th>
+                        <th>Price Elasticity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>High in Summer</td>
+                        <td>1.5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Real-Time Supply Levels -->
+        <section id="real-time-supply">
+            <h2>Real-Time Supply Levels</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Inventory</th>
+                        <th>Storage</th>
+                        <th>Logistics</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>500 kg</td>
+                        <td>Cold Storage</td>
+                        <td>In Transit</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Market Prices -->
+        <section id="market-prices">
+            <h2>Market Price Data</h2>
+            <div class="chart-container">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Analytical Tools -->
+        <section id="analytics-tools">
+            <h2>Analytical Tools</h2>
+            <div class="tool-section">
+                <button>Forecasting</button>
+                <button>Scenario Analysis</button>
+                <button>Data Visualization</button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Navbar Toggle for Mobile
+        const navbarToggle = document.getElementById('navbarToggle');
+        const navbarLinks = document.getElementById('navbarLinks');
+
+        navbarToggle.addEventListener('click', () => {
+            navbarLinks.classList.toggle('show');
+        });
+
+        // Historical Production Data Chart
+        const historicalCtx = document.getElementById('historicalChart').getContext('2d');
+        new Chart(historicalCtx, {
+            type: 'line',
+            data: {
+                labels: ['2019', '2020', '2021', '2022', '2023'],
+                datasets: [
+                    {
+                        label: 'Yield (tons)',
+                        data: [120, 150, 170, 180, 200],
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+
+        // Market Price Data Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+                datasets: [
+                    {
+                        label: 'Price (USD/kg)',
+                        data: [2.5, 2.8, 3.0, 2.9, 3.1],
+                        backgroundColor: 'rgba(255, 99, 132, 0.6)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: { beginAtZero: true }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
