@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Dashboard</title>
+    <link rel="stylesheet" href="farmer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <h1>Farmer Dashboard</h1>
+        </div>
+        <nav class="navbar-links">
+            <ul>
+                
+                <li><a href="#">Crop Types</a></li>
+                <li><a href="#">Planting Data</a></li>
+                <li><a href="#">Harvest Data</a></li>
+                <li><a href="#">Price per KG</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        <!-- Crop Type Section -->
+        <section class="crop-type">
+            <h2>Crop Types</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tomatoes</td>
+                        <td>Vegetable</td>
+                    </tr>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>Cereal</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Planting Data Section -->
+        <section class="planting-data">
+            <h2>Planting Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Planting Date</th>
+                        <th>Planting Area (acres)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tomatoes</td>
+                        <td>2024-03-15</td>
+                        <td>5 acres</td>
+                    </tr>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>2024-02-10</td>
+                        <td>10 acres</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Harvest Data Section -->
+        <section class="harvest-data">
+            <h2>Harvest Data</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Harvest Date</th>
+                        <th>Harvest Quantity (kg)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tomatoes</td>
+                        <td>2024-06-10</td>
+                        <td>2,000 kg</td>
+                    </tr>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>2024-07-25</td>
+                        <td>5,000 kg</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Price per KG Section -->
+        <section class="price-per-kg">
+            <h2>Price per KG</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Price per KG ($)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tomatoes</td>
+                        <td>$2.50</td>
+                    </tr>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>$1.00</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
