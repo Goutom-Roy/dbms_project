@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Officer Dashboard</title>
+    <link rel="stylesheet" href="agri_officer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <h1>Agricultural Officer Dashboard</h1>
+        </div>
+        <nav class="navbar-links">
+            <ul>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Product Scanned</a></li>
+                <li><a href="#">Storage Conditions</a></li>
+                <li><a href="#">Data Received</a></li>
+                <li><a href="#">Selling Prices</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        <section class="overview">
+            <h2>Product Overview</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Quantity Scanned</th>
+                        <th>Storage Condition</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>500 tons</td>
+                        <td>Cool and Dry</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>1,000 tons</td>
+                        <td>Cool and Dry</td>
+                    </tr>
+                    <tr>
+                        <td>Corn</td>
+                        <td>300 tons</td>
+                        <td>Cool and Dry</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="received-data">
+            <h2>Data Received</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Data Type</th>
+                        <th>Received Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>Supply Data</td>
+                        <td>2024-11-19</td>
+                        <td>Processed</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>Price Data</td>
+                        <td>2024-11-18</td>
+                        <td>Pending</td>
+                    </tr>
+                    <tr>
+                        <td>Corn</td>
+                        <td>Supply Data</td>
+                        <td>2024-11-20</td>
+                        <td>Processed</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section class="selling-price">
+            <h2>Selling Price Per KG</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Selling Price (per KG)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>$1.20</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>$0.80</td>
+                    </tr>
+                    <tr>
+                        <td>Corn</td>
+                        <td>$0.60</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>

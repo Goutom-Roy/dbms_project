@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Quality Officer Dashboard</title>
+    <link rel="stylesheet" href="food_quality_officer.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="navbar">
+        <div class="navbar-logo">
+            <h1>Food Quality Officer Dashboard</h1>
+        </div>
+        <nav class="navbar-links">
+            <ul>
+           
+                <li><a href="#">Specialization</a></li>
+                <li><a href="#">Inspection Reports</a></li>
+                <li><a href="#">Inspected Product Info</a></li>
+                <li><a href="#">Crop Quality</a></li>
+                <li><a href="#">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="content">
+        <!-- Specialization Section -->
+        <section class="specialization">
+            <h2>Specialization</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Specialization Area</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Crop Health Inspection</td>
+                        <td>Monitoring and inspecting crop health and diseases</td>
+                    </tr>
+                    <tr>
+                        <td>Quality Testing</td>
+                        <td>Ensuring food products meet quality standards</td>
+                    </tr>
+                    <tr>
+                        <td>Pesticide Residue Testing</td>
+                        <td>Testing for harmful pesticide residues in crops</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Inspection Report Section -->
+        <section class="inspection-report">
+            <h2>Inspection Reports</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Inspection Date</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>2024-11-19</td>
+                        <td>Passed</td>
+                        <td>No issues found</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>2024-11-18</td>
+                        <td>Failed</td>
+                        <td>High pesticide residue detected</td>
+                    </tr>
+                    <tr>
+                        <td>Corn</td>
+                        <td>2024-11-20</td>
+                        <td>Passed</td>
+                        <td>Good quality</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Inspected Product Information Section -->
+        <section class="inspected-product-info">
+            <h2>Inspected Product Information</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Inspection Type</th>
+                        <th>Quality Status</th>
+                        <th>Next Steps</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>Health Check</td>
+                        <td>Good</td>
+                        <td>Ready for market</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>Pesticide Test</td>
+                        <td>Poor</td>
+                        <td>Further testing required</td>
+                    </tr>
+                    <tr>
+                        <td>Corn</td>
+                        <td>Quality Check</td>
+                        <td>Good</td>
+                        <td>Ready for market</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Crop Quality Check Section -->
+        <section class="crop-quality">
+            <h2>Crop Quality Checks</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Crop</th>
+                        <th>Quality Score</th>
+                        <th>Quality Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wheat</td>
+                        <td>85</td>
+                        <td>High</td>
+                    </tr>
+                    <tr>
+                        <td>Rice</td>
+                        <td>60</td>
+                        <td>Medium</td>
+                    </tr>
+                    <tr>
+                        <td>Corn</td>
+                        <td>90</td>
+                        <td>High</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</body>
+</html>
