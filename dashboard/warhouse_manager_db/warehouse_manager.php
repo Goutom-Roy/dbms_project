@@ -1,41 +1,39 @@
 <?php
-// Include the database connection
+// Include the database connection file
 include('../config/connect.php');
 
-// Function to fetch data from the database
-function fetchData() {
-    global $conn;
+// Initialize response array
+$response = array(
+    'qualityCheck' => array(),
+);
 
-    // Prepare and execute query for products data
-    $productsQuery = "SELECT p.product_name, p.storage_condition, p.barcode_number FROM product_t p";
-    $productsResult = mysqli_query($conn, $productsQuery);
-    $products = [];
-    
-    // Fetch all product records
-    while ($product = mysqli_fetch_assoc($productsResult)) {
-        $products[] = $product;
+// Fetch data for quality check
+$qualityCheckQuery = "
+    SELECT 
+        fqo.product_id, 
+        fqo.quality_status, 
+        fqo.inspection_date
+    FROM food_quality_officer_t fqo
+    JOIN Product_t p ON fqo.product_id = p.product_id
+";
+$qualityCheckResult = mysqli_query($conn, $qualityCheckQuery);
+
+if ($qualityCheckResult) {
+    while ($row = mysqli_fetch_assoc($qualityCheckResult)) {
+        $response['qualityCheck'][] = array(
+            'product_id' => $row['product_id'],
+            'quality_status' => $row['quality_status'],
+            'inspection_date' => $row['inspection_date'],
+        );
     }
-
-    // Prepare and execute query for inspections data
-    $inspectionsQuery = "SELECT f.inspection_id, f.inspection_date, f.quality_status, f.remarks, f.inspection_type, 
-                                f.quality_score, f.quality_level, p.product_name 
-                         FROM food_quality_officer_t f 
-                         JOIN product_t p ON f.product_id = p.product_id";
-    $inspectionsResult = mysqli_query($conn, $inspectionsQuery);
-    $inspections = [];
-    
-    // Fetch all inspection records
-    while ($inspection = mysqli_fetch_assoc($inspectionsResult)) {
-        $inspections[] = $inspection;
-    }
-
-    // Return data as a JSON response
-    echo json_encode([
-        'products' => $products,
-        'inspections' => $inspections
-    ]);
+} else {
+    echo json_encode(array('error' => 'Error fetching quality check data.'));
+    exit;
 }
 
-// Call the function to fetch data and return the response
-fetchData();
+// Close database connection
+mysqli_close($conn);
+
+// Return data as JSON
+echo json_encode($response);
 ?>
