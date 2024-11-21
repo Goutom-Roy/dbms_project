@@ -9,14 +9,14 @@
 <body>
   <div class="login-container">
     <h2>Login</h2>
-    <form action="/submit-login" method="post">
+    <form action="login.php" method="post">
       <label for="userId">ID</label>
       <input type="text" id="userId" name="userId" placeholder="Enter your ID" required>
 
       <label for="role">Role</label>
       <select id="role" name="role" required>
         <option value="" disabled selected>Select your role</option>
-        <option value="admin">Admin</option>
+        <option value="ADMIN">Admin</option>
         <option value="AGRICULTURE_OFFICER">AGRICULTURE_OFFICER</option>
           <option value="FARMER">FARMER</option>
           <option value="MARKET_MANAGER">MARKET_MANAGER</option>
@@ -34,5 +34,18 @@
       <button type="submit">Login</button>
     </form>
   </div>
+  <script>
+    document.querySelector('form').addEventListener('submit', function (e) {
+      const userId = document.getElementById('userId').value.trim();
+      const password = document.getElementById('password').value.trim();
+      const role = document.getElementById('role').value;
+  
+      if (!userId || !password || !role) {
+        e.preventDefault();
+        alert('All fields are required!');
+      }
+    });
+  </script>
+  
 </body>
 </html>
