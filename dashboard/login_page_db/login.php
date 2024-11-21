@@ -33,16 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: agri_officer.html');
                     break;
                 case 'FARMER':
-                    header('Location: farmer.html');
+                    header('Location: /dbms_project/dashboard/farmer_db/farmer.html');
                     break;
                 case 'MARKET_MANAGER':
-                    header('Location: market_manager.html');
+                    header('Location: /dbms_project/dashboard/market_manager_db/market_manager.html');
                     break;
                 case 'WARHOUSE_MANAGER':
                     header('Location: warehouse_manager.html');
                     break;
                 case 'FOODQUALITY_OFFICER':
-                    header('Location: food_quality_officer.html');
+                    header('Location: /dbms_project/dashboard/food_quality_officer_db/food_quality_officer.html');
                     break;
                 case 'GOVERNMENT_OFFICER':
                     header('Location: government_officer.html');

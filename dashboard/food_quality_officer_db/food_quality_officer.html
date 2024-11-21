@@ -14,43 +14,14 @@
         </div>
         <nav class="navbar-links">
             <ul>
-           
-                <li><a href="#">Specialization</a></li>
                 <li><a href="#">Inspection Reports</a></li>
                 <li><a href="#">Inspected Product Info</a></li>
                 <li><a href="#">Crop Quality</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/dbms_project/index.html">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main class="content">
-        <!-- Specialization Section -->
-        <section class="specialization">
-            <h2>Specialization</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Specialization Area</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Crop Health Inspection</td>
-                        <td>Monitoring and inspecting crop health and diseases</td>
-                    </tr>
-                    <tr>
-                        <td>Quality Testing</td>
-                        <td>Ensuring food products meet quality standards</td>
-                    </tr>
-                    <tr>
-                        <td>Pesticide Residue Testing</td>
-                        <td>Testing for harmful pesticide residues in crops</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
         <!-- Inspection Report Section -->
         <section class="inspection-report">
             <h2>Inspection Reports</h2>
@@ -64,24 +35,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>2024-11-19</td>
-                        <td>Passed</td>
-                        <td>No issues found</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>2024-11-18</td>
-                        <td>Failed</td>
-                        <td>High pesticide residue detected</td>
-                    </tr>
-                    <tr>
-                        <td>Corn</td>
-                        <td>2024-11-20</td>
-                        <td>Passed</td>
-                        <td>Good quality</td>
-                    </tr>
+                    <!-- Data will be dynamically loaded here -->
                 </tbody>
             </table>
         </section>
@@ -99,24 +53,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>Health Check</td>
-                        <td>Good</td>
-                        <td>Ready for market</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>Pesticide Test</td>
-                        <td>Poor</td>
-                        <td>Further testing required</td>
-                    </tr>
-                    <tr>
-                        <td>Corn</td>
-                        <td>Quality Check</td>
-                        <td>Good</td>
-                        <td>Ready for market</td>
-                    </tr>
+                    <!-- Data will be dynamically loaded here -->
                 </tbody>
             </table>
         </section>
@@ -133,24 +70,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>85</td>
-                        <td>High</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>60</td>
-                        <td>Medium</td>
-                    </tr>
-                    <tr>
-                        <td>Corn</td>
-                        <td>90</td>
-                        <td>High</td>
-                    </tr>
+                    <!-- Data will be dynamically loaded here -->
                 </tbody>
             </table>
         </section>
     </main>
+
+    <!-- JavaScript to fetch data and populate the tables -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Fetch and display data for Inspection Reports
+            fetchData("inspectionReports", ".inspection-report tbody");
+
+            // Fetch and display data for Inspected Product Info
+            fetchData("inspectedProducts", ".inspected-product-info tbody");
+
+            // Fetch and display data for Crop Quality
+            fetchData("cropQuality", ".crop-quality tbody");
+
+            // Function to fetch data from PHP and render into HTML tables
+            function fetchData(type, tableSelector) {
+                fetch("food_quality_officer.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
+                    body: `type=${type}`
+                })
+                .then(response => response.json())
+                .then(data => {
+                    const tableBody = document.querySelector(tableSelector);
+                    tableBody.innerHTML = ""; // Clear existing rows
+
+                    data.forEach(row => {
+                        const tr = document.createElement("tr");
+                        Object.values(row).forEach(value => {
+                            const td = document.createElement("td");
+                            td.textContent = value;
+                            tr.appendChild(td);
+                        });
+                        tableBody.appendChild(tr);
+                    });
+                })
+                .catch(error => console.error("Error fetching data:", error));
+            }
+        });
+    </script>
 </body>
 </html>
