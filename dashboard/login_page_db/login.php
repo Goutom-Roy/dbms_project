@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: /dbms_project/dashboard/admin_db/admin_dashboard.html');
                     break;
                 case 'AGRICULTURE_OFFICER':
-                    header('Location: agri_officer.html');
+                    header('Location: /dbms_project/dashboard/agri_officer_db/agri_officer.html');
                     break;
                 case 'FARMER':
                     header('Location: /dbms_project/dashboard/farmer_db/farmer.html');
@@ -39,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header('Location: /dbms_project/dashboard/market_manager_db/market_manager.html');
                     break;
                 case 'WARHOUSE_MANAGER':
-                    header('Location: warehouse_manager.html');
+                    header('Location: /dbms_project/dashboard/warhouse_manager_db/warehouse_manager.html');
                     break;
                 case 'FOODQUALITY_OFFICER':
                     header('Location: /dbms_project/dashboard/food_quality_officer_db/food_quality_officer.html');
