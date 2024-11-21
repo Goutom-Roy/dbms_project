@@ -6,6 +6,44 @@
     <title>Warehouse Manager Dashboard</title>
     <link rel="stylesheet" href="warehouse_manager.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script>
+        // Function to fetch and populate data into the tables
+        async function fetchData() {
+            try {
+                const response = await fetch('warehouse_manager.php');
+                const data = await response.json();
+                
+                // Populating the safety compliance table
+                const safetyComplianceTable = document.querySelector('.safety-compliance tbody');
+                data.products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.product_name}</td>
+                        <td>${product.storage_condition}</td>
+                        <td>${product.barcode_number}</td>
+                    `;
+                    safetyComplianceTable.appendChild(row);
+                });
+
+                // Populating the quality check table
+                const qualityCheckTable = document.querySelector('.quality-check tbody');
+                data.inspections.forEach(inspection => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${inspection.product_name}</td>
+                        <td>${inspection.quality_status}</td>
+                        <td>${inspection.inspection_date}</td>
+                    `;
+                    qualityCheckTable.appendChild(row);
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+
+        // Call fetchData when the page loads
+        window.onload = fetchData;
+    </script>
 </head>
 <body>
     <header class="navbar">
@@ -14,11 +52,10 @@
         </div>
         <nav class="navbar-links">
             <ul>
-              
                 <li><a href="#">Safety Compliance</a></li>
                 <li><a href="#">Quality Check</a></li>
                 <li><a href="#">Barcode Tagging</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/dbms_project/index.html">Logout</a></li>
             </ul>
         </nav>
     </header>
@@ -31,26 +68,12 @@
                 <thead>
                     <tr>
                         <th>Product</th>
-                        <th>Storage Condition</th>
-                        <th>Compliance Status</th>
+                        <th>Storage Condition</th>                       
+                        <th>Barcode Number</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tomatoes</td>
-                        <td>Cool, Dry Place</td>
-                        <td>Compliant</td>
-                    </tr>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>Room Temperature</td>
-                        <td>Compliant</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>Cool, Dry Place</td>
-                        <td>Non-Compliant</td>
-                    </tr>
+                    <!-- Data will be populated here dynamically -->
                 </tbody>
             </table>
         </section>
@@ -67,52 +90,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Tomatoes</td>
-                        <td>Good</td>
-                        <td>2024-11-15</td>
-                    </tr>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>Good</td>
-                        <td>2024-11-16</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>Poor</td>
-                        <td>2024-11-17</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <!-- Barcode Tagging Section -->
-        <section class="barcode-tagging">
-            <h2>Add Barcode Tags</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Barcode Number</th>
-                        <th>Tagged Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Tomatoes</td>
-                        <td>123456789</td>
-                        <td>2024-11-15</td>
-                    </tr>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>987654321</td>
-                        <td>2024-11-16</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>456123789</td>
-                        <td>2024-11-17</td>
-                    </tr>
+                    <!-- Data will be populated here dynamically -->
                 </tbody>
             </table>
         </section>

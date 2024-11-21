@@ -19,100 +19,84 @@
                 <li><a href="#">Storage Conditions</a></li>
                 <li><a href="#">Data Received</a></li>
                 <li><a href="#">Selling Prices</a></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="/dbms_project/index.html">Logout</a></li>
             </ul>
         </nav>
     </header>
     <main class="content">
+        <!-- Product Overview Section -->
         <section class="overview">
             <h2>Product Overview</h2>
-            <table>
+            <table id="productTable">
                 <thead>
                     <tr>
-                        <th>Product</th>
-                        <th>Quantity Scanned</th>
+                        <th>Product Name</th>
+                        <th>Demand</th>
+                        <th>Expiration Date</th>
+                        <th>Region</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted by JS -->
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Agri Officer Data Section -->
+        <section class="agri-officer-data">
+            <h2>Agri Officer Data</h2>
+            <table id="officerTable">
+                <thead>
+                    <tr>
+                        <th>Product Scanned</th>
                         <th>Storage Condition</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>500 tons</td>
-                        <td>Cool and Dry</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>1,000 tons</td>
-                        <td>Cool and Dry</td>
-                    </tr>
-                    <tr>
-                        <td>Corn</td>
-                        <td>300 tons</td>
-                        <td>Cool and Dry</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="received-data">
-            <h2>Data Received</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product</th>
-                        <th>Data Type</th>
-                        <th>Received Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>Supply Data</td>
-                        <td>2024-11-19</td>
-                        <td>Processed</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>Price Data</td>
-                        <td>2024-11-18</td>
-                        <td>Pending</td>
-                    </tr>
-                    <tr>
-                        <td>Corn</td>
-                        <td>Supply Data</td>
-                        <td>2024-11-20</td>
-                        <td>Processed</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section class="selling-price">
-            <h2>Selling Price Per KG</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Product</th>
+                        <th>Data Received</th>
                         <th>Selling Price (per KG)</th>
+                        <th>Officer Name</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Wheat</td>
-                        <td>$1.20</td>
-                    </tr>
-                    <tr>
-                        <td>Rice</td>
-                        <td>$0.80</td>
-                    </tr>
-                    <tr>
-                        <td>Corn</td>
-                        <td>$0.60</td>
-                    </tr>
+                    <!-- Data will be inserted by JS -->
                 </tbody>
             </table>
         </section>
     </main>
+
+    <script>
+        // Fetch data from agri_officer.php
+        fetch('agri_officer.php')
+            .then(response => response.json())
+            .then(data => {
+                // Populate Product Overview Table
+                const productTableBody = document.getElementById('productTable').querySelector('tbody');
+                data.products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.product_name}</td>
+                        <td>${product.product_demand}</td>
+                        <td>${product.expiration_date}</td>
+                        <td>${product.region_of_product}</td>
+                    `;
+                    productTableBody.appendChild(row);
+                });
+
+                // Populate Agri Officer Data Table
+                const officerTableBody = document.getElementById('officerTable').querySelector('tbody');
+                data.officers.forEach(officer => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${officer.product_scanned}</td>
+                        <td>${officer.check_storage_condition}</td>
+                        <td>${officer.data_received}</td>
+                        <td>${officer.selling_price_per_kg}</td>
+                        <td>${officer.employee_name}</td>
+                    `;
+                    officerTableBody.appendChild(row);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    </script>
 </body>
 </html>
