@@ -62,6 +62,11 @@ label {
     font-weight: bold;
     margin-bottom: 5px;
     text-align: left;
+
+    color: #2d3436;
+    display: block;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
 }
 
 input, select {
@@ -72,12 +77,16 @@ input, select {
     width: 100%;
     box-sizing: border-box;
     transition: border-color 0.3s, box-shadow 0.3s;
+
+    background: #f9f9f9;
 }
 
 input:focus, select:focus {
     outline: none;
     border-color: #0984e3;
     box-shadow: 0 0 5px rgba(9, 132, 227, 0.5);
+
+    background: #ffffff;
 }
 
 /* Button Styling */
