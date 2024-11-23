@@ -34,6 +34,7 @@
                         <th>Demand</th>
                         <th>Expiration Date</th>
                         <th>Region</th>
+                        <th>Upgrade</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -53,6 +54,7 @@
                         <th>Data Received</th>
                         <th>Selling Price (per KG)</th>
                         <th>Officer Name</th>
+                        <th>Upgrade</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,27 +71,29 @@
             .then(data => {
                 // Populate Product Overview Table
                 const productTableBody = document.getElementById('productTable').querySelector('tbody');
-                data.products.forEach(product => {
+                data.products.forEach((product, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${product.product_name}</td>
-                        <td>${product.product_demand}</td>
-                        <td>${product.expiration_date}</td>
-                        <td>${product.region_of_product}</td>
+                        <td contenteditable="true">${product.product_name}</td>
+                        <td contenteditable="true">${product.product_demand}</td>
+                        <td contenteditable="true">${product.expiration_date}</td>
+                        <td contenteditable="true">${product.region_of_product}</td>
+                        <td><button onclick="editProduct(${index})">Edit</button></td>
                     `;
                     productTableBody.appendChild(row);
                 });
 
                 // Populate Agri Officer Data Table
                 const officerTableBody = document.getElementById('officerTable').querySelector('tbody');
-                data.officers.forEach(officer => {
+                data.officers.forEach((officer, index) => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${officer.product_scanned}</td>
-                        <td>${officer.check_storage_condition}</td>
-                        <td>${officer.data_received}</td>
-                        <td>${officer.selling_price_per_kg}</td>
-                        <td>${officer.employee_name}</td>
+                        <td contenteditable="true">${officer.product_scanned}</td>
+                        <td contenteditable="true">${officer.check_storage_condition}</td>
+                        <td contenteditable="true">${officer.data_received}</td>
+                        <td contenteditable="true">${officer.selling_price_per_kg}</td>
+                        <td contenteditable="true">${officer.employee_name}</td>
+                        <td><button onclick="editOfficer(${index})">Edit</button></td>
                     `;
                     officerTableBody.appendChild(row);
                 });
@@ -97,6 +101,59 @@
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
+
+        // Function to handle the Edit button click for Product
+        function editProduct(index) {
+            const row = document.querySelector(`#productTable tbody tr:nth-child(${index + 1})`);
+            const productData = {
+                product_name: row.cells[0].innerText,
+                product_demand: row.cells[1].innerText,
+                expiration_date: row.cells[2].innerText,
+                region_of_product: row.cells[3].innerText
+            };
+
+            fetch('update_product.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(productData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Product updated successfully!');
+            })
+            .catch(error => {
+                console.error('Error updating product:', error);
+            });
+        }
+
+        // Function to handle the Edit button click for Officer Data
+        function editOfficer(index) {
+            const row = document.querySelector(`#officerTable tbody tr:nth-child(${index + 1})`);
+            const officerData = {
+                product_scanned: row.cells[0].innerText,
+                check_storage_condition: row.cells[1].innerText,
+                data_received: row.cells[2].innerText,
+                selling_price_per_kg: row.cells[3].innerText,
+                employee_name: row.cells[4].innerText
+            };
+
+            fetch('update_officer.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(officerData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('Officer data updated successfully!');
+            })
+            .catch(error => {
+                console.error('Error updating officer data:', error);
+            });
+        }
     </script>
 </body>
 </html>
