@@ -74,12 +74,42 @@ table th {
     font-weight: bold;
 }
 table tr:hover {
-    background-color: #f1f1f1;
-}
+    background-color: #f1f1f1;}
 
 /* Heading Styles */
 h2 {
     margin-bottom: 1em;
     color: #2c7d59;
     font-size: 1.6em;
+}
+
+/* Edit Button Styling */
+button {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #4CAF50; /* Green background */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scaling on hover */
+}
+
+/* Focus effect */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(72, 159, 72, 0.8); /* Green shadow when focused */
+}
+
+/* Disabled button state */
+button:disabled {
+    background-color: #cccccc; /* Light gray background */
+    cursor: not-allowed;
 }
